@@ -8,7 +8,7 @@ export const CreatedTasks = () => {
             </header>
             <section className={styles.tasksSection}>
                 <article>
-                    <img src="../../public/Clipboard.svg" alt="imagem" />
+                    <img src="/images/clipboard.svg" alt="imagem" />
                     <p >
                         Você ainda não tem tarefas cadastradas
                     </p>
