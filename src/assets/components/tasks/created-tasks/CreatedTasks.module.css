@@ -8,8 +8,10 @@
 }
 
 .tasksContainer > section {
+    display: inline-block;
+    width: 100%;
+    max-width: 738px;
     margin: 0 auto;
-    width: 736px;
 }
 
 .tasksHeader {
