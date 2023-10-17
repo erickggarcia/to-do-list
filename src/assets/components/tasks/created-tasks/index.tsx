@@ -1,22 +1,24 @@
 import styles from './CreatedTasks.module.css'
 export const CreatedTasks = () => {
     return (
-        <section className={styles.tasksContainer}>
-            <header className={styles.tasksHeader}>
-                <p className={styles.paragraphBlue}>Tarefas Criadas</p>
-                <p className={styles.paragraphPurple}>Concluídas</p>
-            </header>
-            <section className={styles.tasksSection}>
-                <article>
-                    <img src="/images/clipboard.svg" alt="imagem" />
-                    <p >
-                        Você ainda não tem tarefas cadastradas
-                    </p>
-                    <p>
-                        Crie tarefas e organize seus itens a fazer
-                    </p>
-                </article>
+        <div className={styles.tasksContainer}>
+            <section>
+                <header className={styles.tasksHeader}>
+                    <p className={styles.paragraphBlue}>Tarefas Criadas</p>
+                    <p className={styles.paragraphPurple}>Concluídas</p>
+                </header>
+                <section className={styles.tasksSection}>
+                    <article>
+                        <img src="/images/clipboard.svg" alt="imagem" />
+                        <p >
+                            Você ainda não tem tarefas cadastradas
+                        </p>
+                        <p>
+                            Crie tarefas e organize seus itens a fazer
+                        </p>
+                    </article>
+                </section>
             </section>
-        </section>
+        </div>
     )
 }
