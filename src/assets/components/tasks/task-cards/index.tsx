@@ -5,25 +5,24 @@ import { ChangeEvent } from 'react'
 interface iTask {
     task: string
     onDeleteTask: (task: string) => void
-    onChangeInputCheckBox: (event: ChangeEvent<HTMLInputElement>) => void
+    onChangeInputCheckBox: (event: ChangeEvent<HTMLInputElement>, task: string) => void
 }
 
-export const TaskCards = ({ task, onDeleteTask, onChangeInputCheckBox, }: iTask) => {
+export const TaskCards = ({ task, onDeleteTask, onChangeInputCheckBox }: iTask) => {
 
     function handleDeleteTask() {
         onDeleteTask(task)
     }
 
-    function handleInputCheckBox(event: ChangeEvent<HTMLInputElement>, task: string) {
+    function handleRemoveCheckedTask(event: ChangeEvent<HTMLInputElement>) {
         onChangeInputCheckBox(event, task)
     }
-
 
     return (
         <>
             <section className={styles.container}>
                 <article>
-                    <input type="checkbox" name={task} id={task} onChange={handleInputCheckBox} />
+                    <input type="checkbox" name={task} id={task} onChange={handleRemoveCheckedTask} />
                     <label htmlFor={task}>
                         {task}
                     </label>
