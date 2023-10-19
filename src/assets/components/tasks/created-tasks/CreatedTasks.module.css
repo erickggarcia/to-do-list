@@ -5,6 +5,7 @@
     max-height: 100vh;
     height: 17.93em;
     width: 51vw;
+    min-width: 300px;
 }
 
 .tasksContainer > section {
