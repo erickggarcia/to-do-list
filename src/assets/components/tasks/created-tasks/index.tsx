@@ -10,17 +10,11 @@ export interface iTasks {
 export const CreatedTasks = ({ createdTask, onDeleteTask }: iTasks) => {
 
     const [checkedTasksCount, setCheckedTasksCount] = useState<number>(0)
-    const [checkedTasks, setCheckedTasks] = useState<string[]>([])
 
-
-    function handleInputCheckEvent(event: ChangeEvent<HTMLInputElement>, task: string) {
-        console.log(task)
+    function handleInputCheckEvent(event: ChangeEvent<HTMLInputElement>) {
         if (event.target.checked === true) {
             setCheckedTasksCount((checked) => {
                 return checked + 1
-            })
-            setCheckedTasks((task) => {
-                return [...task, event.target.name]
             })
         } else {
             setCheckedTasksCount((checked) => {
@@ -29,7 +23,13 @@ export const CreatedTasks = ({ createdTask, onDeleteTask }: iTasks) => {
         }
     }
 
-    console.log(checkedTasks)
+    function handleRemoveDeletedTaskFromCount() {
+        if (checkedTasksCount > 0) {
+            setCheckedTasksCount((checked) => {
+                return checked - 1
+            })
+        }
+    }
 
     return (
         <div className={styles.tasksContainer}>
@@ -61,6 +61,7 @@ export const CreatedTasks = ({ createdTask, onDeleteTask }: iTasks) => {
                                             key={task}
                                             onDeleteTask={onDeleteTask}
                                             onChangeInputCheckBox={handleInputCheckEvent}
+                                            onRemoveTaskCount={handleRemoveDeletedTaskFromCount}
                                         />
                                     ))}
                                 </>
