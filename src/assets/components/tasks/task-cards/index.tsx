@@ -9,7 +9,9 @@ interface iTask {
     onRemoveTaskCount: () => void
 }
 
+
 export const TaskCards = ({ task, onDeleteTask, onChangeInputCheckBox, onRemoveTaskCount }: iTask) => {
+
 
     function handleDeleteTask() {
         onDeleteTask(task)

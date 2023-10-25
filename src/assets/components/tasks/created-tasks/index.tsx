@@ -10,12 +10,13 @@ export interface iTasks {
 export const CreatedTasks = ({ createdTask, onDeleteTask }: iTasks) => {
 
     const [checkedTasksCount, setCheckedTasksCount] = useState<number>(0)
-
     function handleInputCheckEvent(event: ChangeEvent<HTMLInputElement>) {
+
         if (event.target.checked === true) {
             setCheckedTasksCount((checked) => {
                 return checked + 1
             })
+
         } else {
             setCheckedTasksCount((checked) => {
                 return checked - 1
@@ -55,15 +56,17 @@ export const CreatedTasks = ({ createdTask, onDeleteTask }: iTasks) => {
                         </article>
                             : (
                                 <>
-                                    {createdTask.map((task) => (
-                                        <TaskCards
-                                            task={task}
-                                            key={task}
-                                            onDeleteTask={onDeleteTask}
-                                            onChangeInputCheckBox={handleInputCheckEvent}
-                                            onRemoveTaskCount={handleRemoveDeletedTaskFromCount}
-                                        />
-                                    ))}
+                                    {createdTask.map((task) => {
+                                        return (
+                                            <TaskCards
+                                                task={task}
+                                                key={task}
+                                                onDeleteTask={onDeleteTask}
+                                                onChangeInputCheckBox={handleInputCheckEvent}
+                                                onRemoveTaskCount={handleRemoveDeletedTaskFromCount}
+                                            />
+                                        )
+                                    })}
                                 </>
                             )
                     }

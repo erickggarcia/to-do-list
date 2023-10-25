@@ -1,17 +1,17 @@
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import { CreatedTasks } from '../created-tasks'
 import styles from './CreateTasks.module.css'
+import { useLocalStorage } from '../../../hooks/useLocalStorage'
 import { useState, ChangeEvent, FormEvent } from 'react'
 
 export const CreateTasksForm = () => {
-    const [createdTask, setCreatedTask] = useState<string[]>([])
     const [newTaskText, setNewTaskText] = useState('')
+    const [createdTask, setCreatedTask] = useLocalStorage({ key: 'tasks', initialValue: [] })
 
     function handleCreateNewTask(event: FormEvent) {
         event.preventDefault()
-        setCreatedTask((tasks) =>
-            [...tasks, newTaskText]
-        )
+        const updatedTasks = [...createdTask, newTaskText]
+        setCreatedTask(updatedTasks)
         setNewTaskText('')
     }
 
@@ -20,17 +20,15 @@ export const CreateTasksForm = () => {
     }
 
     function handleDeleteTask(taskToDelete: string) {
-        const taskWithoutDeletedOne = createdTask.filter(task => {
-            return task !== taskToDelete
-        })
-
+        const taskWithoutDeletedOne = createdTask.filter((task: any) => task !== taskToDelete)
         setCreatedTask(taskWithoutDeletedOne)
     }
 
     return (
         <>
             <form className={styles.form} onSubmit={handleCreateNewTask}>
-                <input type="text"
+                <input
+                    type="text"
                     name="task"
                     value={newTaskText}
                     placeholder='Adicione uma nova tarefa'
